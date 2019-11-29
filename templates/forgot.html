@@ -1,0 +1,65 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}Códigos{% endblock %}
+
+{% block content %}
+<form class="form-horizontal" action="/show/bcc/forgotcode" method="POST">
+  <fieldset>
+
+<!-- Form Name -->
+<legend>Recuperar códigos de submissão</legend>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="ra">RA</label>  
+  <div class="col-md-4">
+  <input id="ra" name="ra" type="text" placeholder="número de matrícula" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+<!-- Multiple Radios (inline) -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="turma">Turma</label>
+  <div class="col-md-4"> 
+    <label class="radio-inline" for="turma-0">
+      <input type="radio" name="turma" id="turma-0" value="DA4" required="">
+      DA4
+    </label> 
+    <label class="radio-inline" for="turma-1">
+      <input type="radio" name="turma" id="turma-1" value="NA6" required="">
+      NA6
+    </label> 
+    <label class="radio-inline" for="turma-2">
+      <input type="radio" name="turma" id="turma-2" value="DB4" required="">
+      DB4
+    </label> 
+    <label class="radio-inline" for="turma-3">
+      <input type="radio" name="turma" id="turma-3" value="DC4" required="">
+      DC4
+    </label> 
+    <label class="radio-inline" for="turma-4">
+      <input type="radio" name="turma" id="turma-4" value="NB2" required="">
+      NB2
+    </label>
+  </div>
+</div>
+
+<!-- 
+<div class="form-group">
+  <label class="col-md-4 control-label" for="code">E-mail</label>  
+  <div class="col-md-4">
+    <input id="email" name="email" type="text" placeholder="e-mail institucional" class="form-control input-md" required="">
+  </div>
+</div> Text input-->
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="submit"></label>
+  <div class="col-md-4">
+    <button type="submit" name="submit" class="btn btn-primary">Enviar código por e-mail</button>
+  </div>
+</div>
+
+</fieldset>
+</form>  
+{% endblock %}

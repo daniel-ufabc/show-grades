@@ -1,0 +1,51 @@
+<h3>Suas notas</h3>
+
+<pre>
+    RA: {{ data['RA'] }}
+  NOME: {{ data['NOME'] }}
+  
+    Q1: {{ data['P1(1)'] }}
+    Comentários da questão 1:
+        {{ data['Comentários Q1'] or 'nenhum comentário.' }}
+    Q2: {{ data['P1(2)'] }}
+    Q3: {{ data['P1(3)'] }}
+    Q4: {{ data['P1(4)'] }}
+    Comentários das questões 2 &mdash; 4:
+        {{ data['Comentários Q2 - Q4'] or 'nenhum comentário.' }}
+</pre>
+<pre style="color: red; font-size: x-large;">
+  NOTA: {{ data['P1'] }}
+</pre>
+
+<h3>Arquivos submetidos</h3>
+<ul>
+{% for code in codes %}
+<li><a href="/up/bin/down.py?RA={{ data['RA'] }}&code={{ code[0] }}&turma={{ turma }}">{{ code[2] }} &mdash; {% if code[1] == 'pdf' %}PDF{% else %}Notebook{% endif %}</a></li>
+{% endfor %}
+</ul>
+
+<h3>Desempenho dos alunos (todas as turmas do Prof. Daniel)</h3>
+
+<img src="{{ url_for('static', filename='histogramaQ1.png') }}" />
+
+<img src="{{ url_for('static', filename='histogramaQ2.png') }}" />
+
+<img src="{{ url_for('static', filename='histogramaQ3.png') }}" />
+
+<img src="{{ url_for('static', filename='histogramaQ4.png') }}" />
+
+<img src="{{ url_for('static', filename='histogramaP1.png') }}" />
+
+
+
+
+<!-- 
+<p>A nota que você vê é uma nota normalizada. A formula de normalização 
+envolve o número de acertos e o número de respostas em branco.</p>
+
+<p>A nota normalizada nunca fica pior do que a nota que você receberia se 
+as regras colocadas na prova fossem seguidas à risca.</p>
+
+<img src="https://syntatic.com/histograma.png" />
+
+<img src="https://syntatic.com/questoes.png" /> -->

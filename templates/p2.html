@@ -1,0 +1,51 @@
+<h2>P2</h2>
+
+<h3>Suas notas</h3>
+
+<pre>
+    RA: {{ data['RA'] }}
+  NOME: {{ data['NOME'] }}
+  
+    Q1: {{ data['P2(1)'] }}
+        {{ data['P2(1)C'] }}
+    Q2: {{ data['P2(2)'] }}
+        {{ data['P2(2)C'] }}
+    Q3: {{ data['P2(3)'] }}
+        {{ data['P2(3)C'] }}
+    Q4: {{ data['P2(4)'] }}
+        {{ data['P2(4)C'] }}
+    Q5: {{ data['P2(5)'] }}
+        {{ data['P2(5)C'] }}
+</pre>
+<pre style="color: red; font-size: x-large;">
+  NOTA: {{ data['P2'] }}
+</pre>
+<h3>Comentários:</h3>
+<pre style="font-size: large;">
+{{ (data['P2 Comentários'] or 'nenhum comentário.') | sc2nl }}
+</pre>
+
+<h3>Arquivos submetidos</h3>
+<ul>
+{% for code in codes %}
+<li><a href="/up/bin/down.py?RA={{ data['RA'] }}&code={{ code[0] }}&turma={{ turma }}&subdir={{ obj }}">{{ code[2] }} &mdash; {% if code[1] == 'pdf' %}PDF{% else %}Notebook{% endif %}</a></li>
+{% endfor %}
+</ul>
+
+
+<h3>Desempenho dos alunos (todas as turmas do Prof. Daniel)</h3>
+
+<img src="{{ url_for('static', filename='p2/histograma.png') }}" />
+
+<img src="{{ url_for('static', filename='p2/histogramaQ1.png') }}" />
+
+<img src="{{ url_for('static', filename='p2/histogramaQ2.png') }}" />
+
+<img src="{{ url_for('static', filename='p2/histogramaQ3.png') }}" />
+
+<img src="{{ url_for('static', filename='p2/histogramaQ4.png') }}" />
+
+<img src="{{ url_for('static', filename='p2/histogramaQ5.png') }}" />
+
+
+

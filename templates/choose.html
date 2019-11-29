@@ -1,0 +1,58 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}Menu{% endblock %}
+
+{% block content %}
+<h2>{{ name }}</h2>
+
+{% for obj, code in objs %}
+<form class="form-horizontal" action="/show/bcc/nota/{{ obj }}" method="POST">
+  <fieldset>
+    <input id="ra" name="ra" type="hidden" value="{{ ra }}">
+    <input id="turma" name="turma" type="hidden" value="{{ turma }}">
+    <input it="code" name="code" type="hidden" value="{{ code }}">
+
+    <!-- Button -->
+    <div class="form-group">
+      <label class="col-md-4 control-label" for="submit"></label>
+      <div class="col-md-4">
+	<button type="submit" name="submit" class="btn btn-primary">Resultados {{ obj | upper }}</button>
+      </div>
+    </div>
+
+  </fieldset>
+</form>  
+
+<hr>
+{% endfor %}
+
+<h3>Média e conceito</h3>
+
+<pre>
+    RA: {{ data['RA'] }}
+  NOME: {{ data['NOME'] }}
+  
+    P1: {{ data['P1'] }}
+    P2: {{ data['P2'] }}
+ TIDIA: {{ data['TIDIA'] }}
+FALTAS: {{ data['FALTAS'] }}
+    
+</pre>
+{% if data['NOTA FINAL'] == '' %}
+<pre style="color: red; font-size: x-large;">
+       MÉDIA: {{ data['MÉDIA'] }}
+    CONCEITO: {{ data['CONCEITO'] }}
+</pre>
+{% else %}
+<pre style="color: red; font-size: x-large;">
+       MÉDIA: {{ data['MÉDIA'] }}
+         REC: {{ data['REC'] }}
+  NOTA FINAL: {{ data['NOTA FINAL'] }}     
+    CONCEITO: {{ data['CONCEITO'] }}
+</pre>
+{% endif %}
+
+<h3>Histograma de conceitos</h3>
+
+<img src="{{ url_for('static', filename='conceitos.png') }}" />
+
+{% endblock %}
